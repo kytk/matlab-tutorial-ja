@@ -1,0 +1,812 @@
+\documentclass{jsarticle}
+\usepackage{amsmath}
+\usepackage[dvipdfmx]{graphicx, color}
+\usepackage[
+dvipdfmx,
+bookmarks=true,
+bookmarksnumbered=true,
+bookmarkstype=toc,
+bookmarksopen=true,
+pdftitle={心理のためのMatlabチュートリアル: 練習A-Fの解答と解説},
+pdfauthor={根本清貴},
+pdfsubject={ },
+pdfkeywords={キーワード },
+pdfdisplaydoctitle=true,
+pdfstartview={FitH},
+colorlinks=true,
+]{hyperref}
+\usepackage{pxjahyper}
+\usepackage{ascmac}
+\pagestyle{headings}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+
+
+\begin{document}
+\title{心理のためのMatlabチュートリアル: 練習A-Fの解答と解説}
+\author{根本 清貴}
+\date{\today}
+\maketitle
+\thispagestyle{empty}
+%\tableofcontents
+
+\bigskip
+
+心理のためのMatlabチュートリアルには練習がついていますが、解答がついていません。中には解答がわからなくて困っている方もいらっしゃると思いますので、以下に解答例と簡単な解説を示します。間違いがないように確認してはいますが、間違いがあるかもしれません。間違いを見つけたら教えていただけたら幸いです。(解答例を鵜呑みにしないでください!)また、もっとエレガントな方法もあるかもしれません。あくまでも解答例ということでご了承ください。なお、練習GとHの解答例は現在作成中ですので、できたらアップします。
+
+\section{練習A: データ操作}
+
+\begin{boxnote}
+
+\begin{enumerate}
+\item 次の行列とベクトルを入力してください。
+
+\[
+  a = \left[
+    \begin{array}{cccc}
+      9 & 12 & 13 & 10 \\
+      10 & 3 & 6 & 15 \\
+      2 & 5 & 10 & 3
+    \end{array}
+  \right]
+\]
+
+
+\[
+  b = \left[
+    \begin{array}{cccc}
+      1 & 4 & 2 & 11 \\
+      9 & 8 & 16 & 6 \\
+      12 & 5 & 0 & 3
+    \end{array}
+  \right]
+\]
+
+
+\item {\tt a} と {\tt b} を使って以下の行列を作ってください。
+  \begin{enumerate}
+  \item {\tt c} は行列 a の第 3 行第 3 列にある要素です。
+  \item {\tt d} は行列 a の第 3 列です。
+  \item {\tt e} は行列 b の第 1 行と第 3 行です。
+  \item {\tt f} は行列 a と行列 b を上下に結合したものです。(訳注:a, b の順に 6 行になります)
+  \item {\tt g} は行列 b の第 4 列 の隣に行列 a の第 1 列がくる行列です。
+\end{enumerate}
+
+\item 行列のいくつかの要素を変更してください。
+  \begin{enumerate}
+  \item 行列 e の要素 (2,2) を 20 にしてください。
+  \item 行列 a の第 1 行をすべてゼロにしてください。
+  \item 行列 f の第 3 列を 1 から順に 6 までしてください。
+  \item 行列 a の第 1 列を行列 b の第 2 列にしてください。
+  \end{enumerate}
+\end{enumerate}
+
+\end{boxnote}
+
+
+
+\noindent 1)
+
+{\tt
+a=[9 12 13 0; 10 3 6 15; 2 5 10 3]
+
+b=[1 4 2 11; 9 8 16 7; 12 5 0 3]
+}
+
+\bigskip
+
+\noindent 2)
+
+a) {\tt c=a(3,3)}
+
+b) {\tt d=a(:,3)}
+
+c) {\tt e=b([1;3],:)}
+
+d) {\tt f=[a;b]}
+
+e) {\tt g=[b(:,4) a(:,1)]}
+
+\bigskip
+
+\noindent 3)
+
+a) {\tt e(2,2)=20}
+
+b) {\tt a(1,:)=0}
+
+c) {\tt f(:,3)=1:6}
+
+d) {\tt b(:,2)=a(:,1)}
+
+\section{練習B: 計算と関数}
+
+\begin{boxnote}
+\begin{enumerate}
+  \item 次の行列とベクトルを入力してください。
+\[
+  A = \left[
+    \begin{array}{ccc}
+      1 & 5 & 6 \\
+      3 & 0 & 8
+    \end{array}
+  \right]
+\]
+\[
+  B = \left[
+    \begin{array}{ccc}
+      7 & 3 & 5 \\
+      2 & 8 & 1
+    \end{array}
+  \right]
+\]
+\[ C = 10 \]
+\[ D = 2 \]
+
+\item 以下の計算を行なってください。
+\[E = A-B\]
+\[F = D*B\]
+\[G = A.*B\]
+\[H = A’\]
+\[J = B/D\]
+\end{enumerate}
+\end{boxnote}
+
+\noindent 1)
+
+{\tt A=[1 5 6; 3 0 8]}
+
+{\tt B=[7 3 5; 2 8 1]}
+
+{\tt C=10}
+
+{\tt D=2}
+
+\bigskip
+
+\noindent 2)
+
+{\tt E=A-B}
+
+{\tt F=D*B}
+
+{\tt G=A.*B}
+
+{\tt H=A'}
+
+{\tt J=B/D}
+
+\bigskip
+
+\noindent 3)
+
+a) {\tt M=A(:,1)}
+
+b) {\tt N=G(:,2)}
+
+c) {\tt M+N}
+
+d) {\tt A(:,3)=C*A(:,3)}
+
+e) {\tt sum(H(D,:))}
+
+f) {\tt K=[A;B]}
+
+\bigskip
+
+\noindent 4) 省略
+
+\bigskip
+
+\noindent 5)
+
+行列Jの各列の最大値: {\tt max(J)}
+
+行列Bの各行の最小値: {\tt min(B')}
+
+\begin{screen}
+{\tt max}と{\tt min}は各列の最大値および最小値を求めるコマンドです。今、後半では行列Bの各行の最小値を求めなさいということなので、行列を転置して行列Bの行を列として、それに対してminを使うことで行の最小値を求めています。
+\end{screen}
+
+\section{練習C: 論理値}
+
+\begin{screen}
+データセットを読み込むには、データセットがあるディレクトリに移動し、{\tt load ex\_C.mat}とします。
+\end{screen}
+
+\noindent 1)
+
+{\tt valid=(cue==1)}
+
+\bigskip
+
+\noindent 2)
+
+反応時間の平均値: {\tt mean(rt(valid)) 
+
+\ ans = 221.8139}
+
+反応時間の標準偏差: {\tt std(rt(valid)) 
+
+\ ans = 117.4581}
+
+\bigskip
+
+\noindent 3)
+
+{\tt error=(rt<100|rt>1000)}
+
+\bigskip
+
+\noindent 4)
+
+平均値: {\tt mean(rt(valid \& \verb|~error|)) 
+
+\ ans = 240.9358}
+
+標準偏差: {\tt std(rt(valid \& \verb|~error|)) 
+
+\ ans = 106.2601}
+
+\begin{screen}
+論理ベクトル{\tt error}では、エラーとなる値が1となります。今は、validであり、かつerrorでない値を抜き出したいので、errorの否定である{\tt \verb|~error|}を使って、{\tt (valid \& \verb|~error|)}とします。そのうえで、これに合致するrtの平均値を求めたいので、{\tt mean(rt(valid \& \verb|~error|))}となります。標準偏差も同様です。
+\end{screen}
+
+\bigskip
+
+\noindent 5)
+
+{\tt side=(side==1)}
+
+\begin{screen}
+sideというベクトルは名前は同じですが、意味が違います。右辺のsideは最初に準備されていたベクトルsideで、左が1で右が2という数値が入っているベクトルです。一方で、左辺のsideは、論理ベクトルとなります。今の場合、もともとのsideベクトルは、左が1でした。今、左ならば1, 右ならば0という論理ベクトルを作成することを考え、{\tt side=(side==1)}としました。
+\end{screen}
+
+\bigskip
+
+\noindent 6)
+
+\begin{itemize}
+\item すべての試行における場合
+
+左
+
+平均値: {\tt mean(rt(side)) 
+
+\ ans = 286.9592}
+
+標準偏差: {\tt std(rt(side)) 
+
+\ ans = 115.7977}
+
+右
+
+平均値: {\tt mean(rt(\verb|~side|)) 
+
+\ ans = 304.4309}
+
+標準偏差: {\tt std(rt(\verb|~side|)) 
+
+\ ans = 138.4926}
+
+\bigskip
+
+\item 適切なキューのもとで行われた試行の場合
+
+左
+
+平均値: {\tt mean(rt(valid \& \verb|~error| \& side))
+
+\ ans = 215.9723}
+
+標準偏差: {\tt std(rt(valid \& \verb|~error| \& side)) 
+
+\ ans = 91.4314}
+
+右
+
+平均値: {\tt mean(rt(valid \& \verb|~error| \& \verb|~side|)) 
+
+\ ans = 272.1403}
+
+標準偏差: {\tt std(rt(valid \& \verb|~error| \& \verb|~side|)) 
+
+\ ans = 121.1208}
+
+\end{itemize}
+
+\section{練習D: 実際のデータセット}
+
+\noindent 1)
+
+\begin{verbatim}
+  data(stimno==3,2)=30
+  data(stimno==5,2)=62
+  data(stimno==17,2)=35
+\end{verbatim}
+
+\bigskip
+
+\noindent 2)
+
+\begin{verbatim}
+  subj3=data(:,3)
+  mean(subj3) 
+   ans = 39.0500
+  min(subj3) 
+   ans = 11
+  max(subj3) 
+   ans = 88
+\end{verbatim}
+
+\begin{screen}
+ここではdataから被験者3に関する情報だけを抜き出してsubj3という行列を作成しています。そのsubj3について平均、最小、最大を求めているわけです。
+\end{screen}
+
+\bigskip
+
+\noindent 3)
+\begin{verbatim}
+  subj1=data(:,1)
+  mean(subj1(gender==1))
+   ans = 39.1000
+  mean(subj1(gender==2))
+   ans = 54.5000
+\end{verbatim}
+
+\begin{screen}
+先ほどと同様に被験者1に関する情報だけを抜き出してsubj1という行列を作成しています。そして、さらにgender==1, gender==2という条件での論理ベクトルを作成してそれに合致するものだけの平均を求めているわけです。
+\end{screen}
+
+\bigskip
+
+\noindent 4)
+\begin{verbatim}
+  subj3=data(:,3)
+  mean(subj3(symm>3))
+   ans = 51.7500
+  mean(subj3(symm<3))
+   ans = 26.5000
+\end{verbatim}
+
+\begin{screen}
+対称性が高い顔の論理ベクトルはsymm\verb|>|3で、低い顔の論理ベクトルはsymm\verb|<|3で示すことができます。
+\end{screen}
+
+\bigskip
+
+\noindent 5)
+\begin{verbatim}
+  subj2=data(:,2)
+  find(subj2==subj3)
+   ans = 
+   3
+   4
+\end{verbatim}
+
+\begin{screen}
+被験者2のデータをsubj2という行列で作成した後、findを使ってsubj2とsubj3で値が一致する場所を求めています。今の場合、3と4と出ていますので、dataの3行目、4行目が被験者2と被験者3の結果が一致した場所ということになります。
+\end{screen}
+
+\bigskip
+
+\noindent 6)
+\begin{verbatim}
+  mean(abs(subj1-subj2))
+   ans = 22.6000
+\end{verbatim}
+
+\begin{screen}
+被験者1と2が合致していないということは、差分をとればいいことになります。しかし、場合によってはマイナスになることもありますので、絶対値を返す関数absを使って、abs(subj1-subj2)ということで差分の絶対値を計算し、その平均値をとっています。
+\end{screen}
+
+\bigskip
+
+\noindent 7)
+
+\begin{verbatim}
+  old=(stimno==4|stimno==10|stimno==12|stimno==18)
+  oldfaces=data(old)
+   oldfaces =
+     67    75    52
+     44    23    34
+     59    21    30
+     58    52    31
+  mean(oldfaces)
+   ans = 57.0000   42.7500   36.7500
+  youngfaces=data(~old,:)
+  mean(youngfaces)
+   ans = 44.2500   40.1875   39.6250
+\end{verbatim}
+
+\begin{screen}
+stimnoが4, 10, 12, 18のデータだけからなる論理ベクトルoldを作成し、それに合致する行列の成分を取り出し、oldfacesとし、その平均値を求めています。また、論理ベクトルoldの否定を満たす行列の成分をyoungfacesとし、その平均を求めています。この結果から、被験者1と2は年を重ねている人のほうを魅力的と考えていることがわかります。
+\end{screen}
+
+\bigskip
+
+\noindent 8)
+
+\begin{verbatim}
+  sortrows([stimno data],1)
+\end{verbatim}
+
+\begin{screen}
+まず、stimnoとdataを用いた行列を作成しています。そしてsortrowsは行列のあとにどの列を用いてソートするかを指定できるので、stimnoがある1列目を指定することによってstimnoの値によってソートさせています。
+\end{screen}
+
+\bigskip
+
+\section{練習E: グラフ基本編}
+
+\noindent 1)
+
+a) {\tt X=1:10}
+
+b) {\tt Y=X.\verb|^|2}
+
+\begin{screen}
+{\tt Y=X\verb|^|2}でないことに注意してください。行列Xの要素ひとつひとつを2乗する必要があるため、{\tt Y=X.\verb|^|2}となります。
+\end{screen}
+
+c) {\tt Z=9*X}
+
+d) {\tt figure(2)
+
+\ \ plot(X,Y,'r-*')}
+
+e) {\tt hold on
+
+\ \ plot(X,Z,'g-s')}
+
+f) {\tt title('Graphs')
+
+\ \ legend('Y=X\verb|^|2','Z=9*X')
+}
+
+\bigskip
+
+\noindent 2)
+
+a) {\tt close all
+
+\ \ plot(scoreA,iq,'bo')}
+
+b) {\tt hold on
+
+\ \ plot(scoreB,iq,'rs')}
+
+c) {\tt xlabel('scoreA or B')
+
+\ \ ylabel('IQ')}
+
+d) {\tt lsline}
+
+e) {\tt close all
+
+\ \ avg=[mean(scoreA) mean(scoreB)]
+
+\ \ bar(avg)}
+
+\begin{screen}
+ここでは、scoreAとscoreBの平均を求め、avgというベクトルに入れています。
+その後にbar関数を使って棒グラフを作成しています。
+\end{screen}
+
+f) {\tt hold on
+
+\ \ sem=[std(scoreA)/sqrt(length(scoreA)) std(scoreB)/sqrt(length(scoreB))]
+
+\ \ errorbar(avg,sem,'x')}
+
+\begin{screen}
+エラーバーとして標準誤差を用いたいと考えました。標準誤差は、標準偏差をNの数の平方根で割ったものとなります。そこで、{\tt length(scoreA)}でベクトルscoreAの要素の数を求め、その平方根をとるということをしています。
+\end{screen}
+
+g) {\tt close all
+
+\ \ subplot(2,1,1)
+
+\ \ hist(scoreA)
+
+\ \ subplot(2,1,2)
+
+\ \ hist(scoreB)
+}
+
+\section{練習F: スクリプトと関数}
+
+\noindent 1)
+
+\begin{screen}
+以下を{\tt exercise\_c.m}として保存してください。なお、変数名は問題の答えとしてわかりやすいように決めています。自分の好みにあわせて変えていただいて何の問題もありません。
+\end{screen}
+
+\begin{verbatim}
+  %変数をクリアする
+  clear all
+
+  %データセットの読み込み
+  load ex_C.mat
+
+  % 1) 論理ベクトルの作成
+  valid=(cue==1);
+
+  % 2) 反応時間の平均値および標準偏差を求める
+  mean_rt_with_valid_cue=mean(rt(valid))
+  sd_rt_with_valid_cue=std(rt(valid))
+
+  % 3) エラー定義ベクトルの作成
+  error=(rt<100|rt>1000);
+
+  % 4) 適切な試行の平均および標準偏差
+  mean_appro_rt=mean(rt(valid & ~error))
+  sd_appro_rt=std(rt(valid & ~error))
+
+  % 5) sideベクトルの作成
+  side=(side==1)
+
+  % 6.1) すべての試行における左右の反応時間
+  lt_mean_rt_all=mean(rt(side))
+  lt_std_rt_all=std(rt(side))
+
+  rt_mean_rt_all=mean(rt(~side))
+  rt_std_rt_all=std(rt(~side))
+
+  % 6.2) 適切なキューのもとで行われた試行における左右の反応時間
+  lt_mean_rt_appro=mean(rt(valid & ~error & side))
+  lt_std_rt_appro=std(rt(valid & ~error & side))
+
+  rt_mean_rt_appro=mean(rt(valid & ~error & ~side))
+  rt_std_rt_appro=std(rt(valid & ~error & ~side))
+\end{verbatim}
+
+\bigskip
+
+\noindent 2)
+
+a) {\tt
+
+\ \ clear all
+
+\ \ for i=1:20
+
+\ \ \ \ \ \ A(i,1)=mean(rand(1,3));
+
+\ \ end
+
+\ \ A
+}
+
+\begin{screen}
+3つの乱数は{\tt rand(1,3)}で求めることができます。この結果を、ベクトルAの1行から20行まで順にいれていきます。forループで変わっていく変数をiとすると、乱数の平均値を格納する場所は、i行1列となりますので、{\tt A(i,1)}と表示できます。
+\end{screen}
+
+
+\bigskip
+
+b) {\tt 
+
+\ \ for i=1:20
+
+\ \ \ \ \ \ B(i,1)=mean(rand(1,30));
+
+\ \ end
+
+\ \ B
+}
+
+\bigskip
+
+c) {\tt
+
+\ \ std\_A=std(A)
+
+\ \ std\_B=std(B)
+}
+
+\bigskip
+
+d) {\tt
+
+\ \ close all
+
+\ \ figure(2)
+
+\ \ subplot(2,1,1)
+
+\ \ hist(A)
+
+\ \ subplot(2,1,2)
+
+\ \ hist(B)
+}
+
+\begin{screen}
+縦に2つ並んだグラフを描くこととします。この場合、{\tt subplot(2,1,1)}で、2行1列のグラフの1行目のグラフと指定して、そこにAのヒストグラムを描き、次に、{\tt subplot(2,1,2)}で、2行目のグラフと指定してBのヒストグラムを描きます。
+\end{screen}
+
+\bigskip
+
+
+\noindent 3)
+
+a)
+
+\begin{screen}
+下記のスクリプトを{\tt exercise\_f3a.m}として保存していただき、Aに適当な値を代入した後に{\tt exercise\_f3a.m}を実行してみてください。
+\end{screen}
+
+{\tt
+
+\ \ switch(A)
+
+\ \ \ \ case 1
+
+\ \ \ \ \ \ disp('A is one')
+
+\ \ \ \ case 3
+
+\ \ \ \ \ \ disp('A is three')
+
+\ \ \ \ case 5
+
+\ \ \ \ \ \ disp('A is five')
+
+\ \ \ \ otherwise
+
+\ \ \ \ \ \ disp('A is not one or three or five')
+
+\ \ end
+}
+
+\bigskip
+
+b)
+
+{\tt
+
+\ \ switch(A)
+
+\ \ \ \ case 1
+
+\ \ \ \ \ \ disp('A is 0')
+
+\ \ \ \ case 3
+
+\ \ \ \ \ \ disp('A is 1')
+
+\ \ \ \ case 5
+
+\ \ \ \ \ \ disp('A is 2')
+
+\ \ \ \ otherwise
+
+\ \ \ \ \ \ disp('A is not 0 or 1 or 2')
+
+\ \ end
+}
+
+\bigskip
+
+c)
+
+{\tt
+
+\ \ switch(rem(A,3))
+
+\ \ \ \ case 0
+
+\ \ \ \ \ \ disp('A is 0')
+
+\ \ \ \ case 1
+
+\ \ \ \ \ \ disp('A is 1')
+
+\ \ \ \ case 2
+
+\ \ \ \ \ \ disp('A is 2')
+
+\ \ \ \ otherwise
+
+\ \ \ \ \ \ disp('A is not 0 or 1 or 2')
+
+\ \ end
+}
+
+\bigskip
+
+d)
+
+\begin{screen}
+下記のスクリプトを{\tt exercise\_f3d.m}として保存していただき、実行してみてください。
+\end{screen}
+
+{\tt
+\ \ for A=50:70
+
+\ \ \ \ switch(rem(A,3))
+
+\ \ \ \ \ \ case 0
+
+\ \ \ \ \ \ \ \ disp('rem of A is 0')
+
+\ \ \ \ \ \ case 1
+
+\ \ \ \ \ \ \ \ disp('rem of A is 1')
+
+\ \ \ \ \ \ case 2
+
+\ \ \ \ \ \ \ \ disp('rem of A is 2')
+
+\ \ \ \ end
+
+\ \ end
+}
+
+\bigskip
+
+e)
+
+{\tt
+\ \ clear all
+
+\ \ A=rand(1,20);
+
+\ \ \% ベクトルの要素数を求める
+
+\ \ N=length(A);
+
+\ \ \% ベクトルの要素の標準偏差を求める
+
+\ \ SD=std(A);
+
+\ \ \% 標準誤差を求める
+
+\ \ SE=SD/sqrt(N)
+}
+
+
+\begin{screen}
+母集団が十分大きいと考えられる時、標本数n、標準偏差sの標準誤差は、$\frac{s}{\sqrt[]{n}}$で表されます。そこで、今は、1行20列の乱数でできたベクトルを作り、そこから要素数(20となります)と要素の標準偏差を求めたうえで、標準誤差を計算します。
+\end{screen}
+
+\bigskip
+
+
+\section{練習G: 構造体配列とセル配列}
+
+\noindent 1)
+
+\begin{verbatim}
+  clothes(:,1)={'hat' 'coat' 'gloves' 'shoes' 'socks' 'vest' 'jacket' 'gown'}
+\end{verbatim}
+
+\noindent 2)
+
+\begin{verbatim}
+  clothes(:,2)={'high' 'med' 'low' 'med' 'low' 'low' 'med' 'low'}
+\end{verbatim}
+
+
+\noindent 3)
+
+\begin{screen}
+{\tt bar(mean(ld))}で、各列(各項目)の平均値を棒グラフであらわします。その後、{\tt errorbar}を使ってエラーバーを表示します。その後、{\tt set(gca,'XTickLabel',clothes(:,1))}を使って、x軸のラベルにclothes(:,1)の内容を使います。
+\end{screen}
+
+\begin{verbatim}
+  load ex_F.mat
+
+  bar(mean(ld))
+  hold on
+  errorbar(mean(ld),std(ld)/sqrt(length(ld)),'x')
+  set(gca,'XTickLabel',clothes(:,1))
+\end{verbatim}
+
+
+
+%\section{練習H: 実際のデータセット パート2}
+
+\end{document}
+
