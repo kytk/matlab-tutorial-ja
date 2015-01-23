@@ -238,6 +238,7 @@ side はターゲットが画面の左(1)か右(2)にあらわれたかを意味
 \end{enumerate}
 \end{boxnote}
 
+\bigskip
 
 \begin{screen}
 データセットを読み込むには、データセットがあるディレクトリに移動し、{\tt load ex\_C.mat}とします。
@@ -502,6 +503,51 @@ stimnoが4, 10, 12, 18のデータだけからなる論理ベクトルoldを作�
 
 \section{練習E: グラフ基本編}
 
+\begin{boxnote}
+はじめる前に {\tt clear all} と {\tt close all} をタイプしてください。
+
+\begin{enumerate}
+\item グラフをいくつか描いてみましょう。
+
+	\begin{enumerate}
+	\item 値が 1 から 10 までのベクトル X をつくってください。
+	\item X を 2 乗したベクトル Y をつくってください。
+	\item X を 9 倍したベクトル Z をつくってください。
+	\item Figure 2 に X と Y をプロットしてください。グラフの線は赤とし、
+	各々のデータは星印({\tt stars})で示してください。
+	(必要ならば help plot とタイプしてください)
+	\item そのグラフを残したまま、X と Z をプロットしてください。
+	グラフの線は緑で、各々のデータは四角で示してください。
+	\item 図にタイトルと凡例をつけてください。
+	\end{enumerate}
+
+\item exercise2.mat を読み込んでください
+(訳注: これは今までのディレクトリ matlab\_tute の上のディレクトリにあります)。
+このファイルには 3 つのベクトルが入っています。iq, scoreA, scoreB の 3 つで
+(架空の)被験者のテストの点数です。
+
+	\begin{enumerate}
+	\item 青の丸印を使って scoreA と iq のグラフを描いてください。
+	\item 同じグラフ上に赤い四角を使って scoreB と iq のグラフを
+	描いてください。
+	\item 軸にラベルをつけてください。
+	\item statistics toolbox を持っているならば、lsline をタイプすして
+	最小二乗法を用いてこのデータにもっともよくフィットする線を
+	描いてください。
+	\item 新しいグラフに、棒グラフを用いて scoreA と scoreB の平均を
+	比べてみてください。2 つの平均値をもつ新しいベクトルをつくるほうが
+	簡単かもしれません。
+	\item 棒グラフにエラーバーをつけてください。
+	\item 2 つのサブグラフをもつ図を作りましょう。scoreA の分布を
+	( {\tt hist} を使って) subplot1 に描いてください。
+	Subplot2 には scoreB の分布を描いてください。
+	\end{enumerate}
+
+\end{enumerate}
+\end{boxnote}
+
+\bigskip
+
 \noindent 1)
 
 a) {\tt X=1:10}
@@ -509,7 +555,7 @@ a) {\tt X=1:10}
 b) {\tt Y=X.\verb|^|2}
 
 \begin{screen}
-{\tt Y=X\verb|^|2}でないことに注意してください。行列Xの要素ひとつひとつを2乗する必要があるため、{\tt Y=X.\verb|^|2}となります。
+{ \tt Y=X\verb|^|2}でないことに注意してください。行列Xの要素ひとつひとつを2乗する必要があるため、{\tt Y=X.\verb|^|2}となります。
 \end{screen}
 
 c) {\tt Z=9*X}
